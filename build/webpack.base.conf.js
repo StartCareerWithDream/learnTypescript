@@ -34,7 +34,8 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: vueLoaderConfig,
+        
       },
       {
         test: /\.js$/,
@@ -72,6 +73,10 @@ module.exports = {
         options: {
           appendTsSuffixTo: [/\.vue$/],
         }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       },
     ]
   },

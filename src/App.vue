@@ -14,7 +14,7 @@ import LoginService from './service/LoginService'
 import Login from './model/Login';
 
 @Component
-export default class App extends Vue{
+export default class App extends Vue {
     userInfo: Login = new Login()
     msg: String = ''
 
@@ -22,21 +22,21 @@ export default class App extends Vue{
       return this.userInfo.username
     }
 
-    doLoginAction() {
-      LoginService.login(this.userInfo).then((res: any)=> {
+    doLoginAction() { // 登录
+      LoginService.login(this.userInfo).then((res)=> {
           console.log(res);
       })
     }
 
-    doLoginStatus() {
-      LoginService.status(this.userInfo.username).then((res: any)=> {
+    doLoginStatus() { // 检测账号合法性
+      LoginService.status(this.getUserName).then((res)=> {
           console.log(res);
       })
     }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

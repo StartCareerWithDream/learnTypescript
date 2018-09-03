@@ -1,23 +1,27 @@
 import HttpService from './httpService'
 import Login from '../model/Login';
-const LoginService = {
+import Response from '../model/Response';
+
+export default class LoginService  {
     // 账号状态
-    status: (username: string) => {
+    static status(username: string): Promise<Response> {
         return HttpService({
             url: '/login/status',
             method: 'GET',
             params: { username: username }
-        }) 
-    },
+        }).then((res) => {
+            return res.data
+        });
+    }
 
     // 登录接口
-    login: (data: Login) => {
+    static login(data: Login): Promise<Response> {
         return HttpService({
             url: '/login',
             method: 'POST',
             params: data
+        }).then((res)=>{
+            return res.data
         })
     }
 }
-
-export default LoginService;
